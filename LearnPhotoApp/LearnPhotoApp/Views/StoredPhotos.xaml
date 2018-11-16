@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:viewModels="clr-namespace:LearnPhotoApp.ViewModels"
+             x:Class="LearnPhotoApp.Views.StoredPhotos"
+             mvvm:ViewModelLocator.AutowireViewModel="True">
+    <ContentPage.Resources>
+        <DataTemplate x:Key="MyPhotosDataTemplate"  x:DataType="{x:Type viewModels:StoredPhotosViewModel}">
+            <ViewCell>
+                <Grid>
+                    <Label Text="{Binding PhotoName}"/>
+                </Grid>
+            </ViewCell>
+        </DataTemplate>
+        </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView ItemsSource="{Binding PhotosViewModels}"
+                      ItemTemplate="{StaticResource MyPhotosDataTemplate}" 
+                      HasUnevenRows="True"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
